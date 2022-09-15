@@ -1,0 +1,12 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "dart",
+    "lua",
+    "py"
+  ],
+
+  "stylua.styluaPath": "/usr/bin/stylua",
+
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black"
+}
