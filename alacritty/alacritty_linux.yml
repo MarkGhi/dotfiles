@@ -1,0 +1,52 @@
+window:
+  padding:
+    x: 0
+    y: 0
+
+font:
+  normal:
+    # Needs to be powerline font if using zsh theme with powerline
+    family: FiraCode Nerd Font
+  bold:
+    # Needs to be powerline font if using zsh theme with powerline
+    family: FiraCode Nerd Font
+  italic:
+    # Needs to be powerline font if using zsh theme with powerline
+    family: FiraCode Nerd Font
+  bold_italic:
+    # Needs to be powerline font if using zsh theme with powerline
+    family: FiraCode Nerd Font
+
+  # Font size
+  size: 12
+
+  draw_bold_text_with_bright_colors: false
+
+colors:
+  name: Google (dark)
+  author: Chris Kempson
+  primary:
+    background: "#1d1f21"
+    foreground: "#c5c8c6"
+  cursor:
+    text: "#1d1f21"
+    cursor: "#c5c8c6"
+  normal:
+    black: "#1d1f21"
+    red: "#cc342b"
+    green: "#198844"
+    yellow: "#fba922"
+    blue: "#3971ed"
+    magenta: "#a36ac7"
+    cyan: "#3971ed"
+    white: "#c5c8c6"
+  bright:
+    black: "#969896"
+    red: "#cc342b"
+    green: "#198844"
+    yellow: "#fba922"
+    blue: "#3971ed"
+    magenta: "#a36ac7"
+    cyan: "#3971ed"
+    white: "#ffffff"
+theme: Google.dark
