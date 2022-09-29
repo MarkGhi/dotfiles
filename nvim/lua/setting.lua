@@ -13,25 +13,52 @@ vim.opt.title = true -- Show the file title
 vim.opt.ttimeoutlen = 0 -- Time in millisecond to run commands
 vim.opt.wildmenu = true -- Advanced menu for auto-completition
 
--- Airline setup
-vim.g["airline_theme"] = "bubblegum" -- Set Airline theme
-vim.g["airline_powerline_fonts"] = 1 -- Set powerline mode
-vim.g["airline#extensions#tabline#enabled"] = 1 -- Enable Airline also for the tab bar
+-- Lualine setup
+require("lualine").setup({
+	options = {
+		theme = "onedark",
+		globalstatus = true, -- Set global to avoid bar split when window is splitted
+	},
+	tabline = {
+		lualine_a = { "buffers" },
+		lualine_b = { "branch" },
+		lualine_c = { "filename" },
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = { "tabs" },
+	},
+})
 
--- NerdTree setup
-vim.g["NERDTreeShowHidden"] = 1 -- Set NerdTree to show also hidden file
-
--- Last line tell to open by default NerdTree and focus on editor
 vim.cmd([[
   syntax enable
   au TermOpen * tnoremap <Esc> <C-\><C-n>
-  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 ]])
 
+-- Theme config
 require("onedark").setup({
 	style = "warmer",
 	toggle_style_key = "<leader>@", --Put a random mapping to avoid any conflicts
 })
+require("leaf").setup({
+	contrast = "low", -- default "low", alternatives: "medium", "high"
+})
+
 require("onedark").load()
+--vim.cmd("colorscheme leaf")
+--vim.cmd("colorscheme everforest")
+
+require("nvim-treesitter.configs").setup({
+	highlight = {
+		enable = true,
+		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+		-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+		-- Using this option may slow down your editor, and you may see some duplicate highlights.
+		-- Instead of true it can also be a list of languages
+		additional_vim_regex_highlighting = false,
+	},
+})
+
+-- NvimTree setup
+require("nvim-tree").setup()
 
 --vim.opt.t_Co=256 --Enable 256 colors on the terminal (don't really know what it means, so off for now)

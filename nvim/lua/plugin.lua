@@ -65,15 +65,28 @@ require("packer").startup(function()
 			require("toggleterm").setup()
 		end,
 	})
+	use("daschw/leaf.nvim")
+	use("sainnhe/everforest")
 	use("navarasu/onedark.nvim")
 	use({ "neoclide/coc.nvim", branch = "release" })
-	use("vim-airline/vim-airline") -- Fancy bottom statusbar
-	use("vim-airline/vim-airline-themes") -- Statusbar themes
-	use("ryanoasis/vim-devicons") -- Icons for the interface
-	use("sheerun/vim-polyglot") -- Syntax highlighting for several programming languages
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = function()
+			require("nvim-treesitter.install").update({ with_sync = true })
+		end,
+	})
 	use("jiangmiao/auto-pairs") -- Automatically closes parentheses, square brackets and braces when typing.
 	use("ap/vim-css-color") -- Show colors directly in the code
-	use("preservim/nerdtree") -- Sidebar for project file navigation
+	use({
+		"kyazdani42/nvim-tree.lua",
+		requires = {
+			"kyazdani42/nvim-web-devicons", -- optional, for file icons
+		},
+	})
 	use("plasticboy/vim-markdown") -- .md syntax support
 	use("airblade/vim-gitgutter") -- Shows git changes in open files
 	use("tpope/vim-fugitive") -- Git integration
