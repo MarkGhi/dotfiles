@@ -8,7 +8,12 @@ Dependencies:
 - Nerd Font to correctly display icons and symbols
 - StyLua for Lua code formatting
 
-Install necessary Coc extension with:
+Install necessaries Coc extensions with:
 ````
 :CocInstall coc-flutter coc-lua coc-stylua coc-pyright
 ````
+
+Install necessaries Treesitter extensions with:
+````
+:TSInstall dart python lua
+```
