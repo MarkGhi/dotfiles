@@ -16,4 +16,4 @@ Install necessaries Coc extensions with:
 Install necessaries Treesitter extensions with:
 ````
 :TSInstall dart python lua
-```
+````
