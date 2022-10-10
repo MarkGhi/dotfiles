@@ -3,10 +3,10 @@ local keyset = vim.keymap.set
 keyset("n", "<Leader>e", ":NvimTreeFocus<CR>", { desc = "NerdTree focus" })
 keyset("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "NerdTree toggle" })
 
-keyset("n", "<A-h>", "<C-w>h", { desc = "Move to left windows" })
-keyset("n", "<A-j>", "<C-w>j", { desc = "Move to bottom windows" })
-keyset("n", "<A-k>", "<C-w>k", { desc = "Move to top windows" })
-keyset("n", "<A-l>", "<C-w>l", { desc = "Move to right windows" })
+keyset("n", "∆", "<C-w>h", { desc = "Move to left windows" })
+keyset("n", "ª", "<C-w>j", { desc = "Move to bottom windows" })
+keyset("n", "º", "<C-w>k", { desc = "Move to top windows" })
+keyset("n", "¬", "<C-w>l", { desc = "Move to right windows" })
 keyset("n", "<A-Left>", "<C-w>h", { desc = "Move to left windows" })
 keyset("n", "<A-Down>", "<C-w>j", { desc = "Move to bottom windows" })
 keyset("n", "<A-Up>", "<C-w>k", { desc = "Move to top windows" })
@@ -38,11 +38,11 @@ keyset("n", "<Leader>fb", ":below new output:///flutter-dev<CR>", { desc = "Show
 keyset("n", "<Leader>fe", ":CocCommand flutter.emulators<CR>", { desc = "Show all availiable flutter emulators" })
 
 -- Coc general (most of them retreived from official coc.nvim repo readme)
-local opts = { silent = true, noremap = true, expr = true }
+local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
 
 function _G.check_back_space()
-	local col = vim.fn.col(".") - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
 -- Navigate through autocomplete dialog with Tab
