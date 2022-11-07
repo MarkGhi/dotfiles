@@ -3,10 +3,18 @@ local keyset = vim.keymap.set
 keyset("n", "<Leader>e", ":NvimTreeFocus<CR>", { desc = "NerdTree focus" })
 keyset("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "NerdTree toggle" })
 
-keyset("n", "<A-h>", "<C-w>h", { desc = "Move to left windows" })
-keyset("n", "<A-j>", "<C-w>j", { desc = "Move to bottom windows" })
-keyset("n", "<A-k>", "<C-w>k", { desc = "Move to top windows" })
-keyset("n", "<A-l>", "<C-w>l", { desc = "Move to right windows" })
+-- MacOs has different key signal for Alt-hjkl
+if vim.fn.has "mac" == 1 then
+	keyset("n", "∆", "<C-w>h", { desc = "Move to left windows" })
+	keyset("n", "ª", "<C-w>j", { desc = "Move to bottom windows" })
+	keyset("n", "º", "<C-w>k", { desc = "Move to top windows" })
+	keyset("n", "¬", "<C-w>l", { desc = "Move to right windows" })
+else
+	keyset("n", "<A-h>", "<C-w>h", { desc = "Move to left windows" })
+	keyset("n", "<A-j>", "<C-w>j", { desc = "Move to bottom windows" })
+	keyset("n", "<A-k>", "<C-w>k", { desc = "Move to top windows" })
+	keyset("n", "<A-l>", "<C-w>l", { desc = "Move to right windows" })
+end
 keyset("n", "<A-Left>", "<C-w>h", { desc = "Move to left windows" })
 keyset("n", "<A-Down>", "<C-w>j", { desc = "Move to bottom windows" })
 keyset("n", "<A-Up>", "<C-w>k", { desc = "Move to top windows" })
@@ -14,10 +22,12 @@ keyset("n", "<A-Right>", "<C-w>l", { desc = "Move to right windows" })
 
 keyset("n", "<Esc>", "<cmd> noh <CR>", { desc = "Remove highlight" })
 keyset("n", "<C-h>", "<ESC>^", { desc = "Go to beginning" })
+keyset("v", "<C-h>", "<ESC>^", { desc = "Go to beginning" })
 keyset("n", "<C-l>", "<End>", { desc = "Go to end" })
+keyset("v", "<C-l>", "<End>", { desc = "Go to end" })
 keyset("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy all" })
 keyset("n", "<C-s>", "<cmd> w <CR>", { desc = "Save" })
-keyset("n", "<C-w>", ":b#|bd# <CR>", { desc = "Close current buffer" })
+keyset("n", "<C-w>", ":bp|bd# <CR>", { desc = "Close current buffer" })
 keyset("n", "<C-q>", "<cmd> q <CR>", { desc = "Close current window" })
 
 keyset("n", "<Leader>s", ":vsplit<CR>", { desc = "Create new window to right" })
@@ -38,11 +48,11 @@ keyset("n", "<Leader>fb", ":below new output:///flutter-dev<CR>", { desc = "Show
 keyset("n", "<Leader>fe", ":CocCommand flutter.emulators<CR>", { desc = "Show all availiable flutter emulators" })
 
 -- Coc general (most of them retreived from official coc.nvim repo readme)
-local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
 
 function _G.check_back_space()
-	local col = vim.fn.col(".") - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s") ~= nil
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
 -- Navigate through autocomplete dialog with Tab
@@ -56,7 +66,7 @@ keyset("n", "<Leader>a", "<Plug>(coc-codeaction-selected)", { desc = "Show Coc c
 keyset("x", "<Leader>a", "<Plug>(coc-codeaction-selected)", { desc = "Show Coc code action" })
 keyset("n", "<Leader>f", "<Plug>(coc-format-selected)", { desc = "Format selected code" })
 keyset("x", "<Leader>f", "<Plug>(coc-format-selected)", { desc = "Format selected code" })
-keyset("n", "<Leader>d", "<Plug>(coc-definition)", { desc = "Goto definition" })
+keyset("n", "<Leader>dg", "<Plug>(coc-definition)", { desc = "Goto definition" })
 keyset("n", "<Leader>r", "<Plug>(coc-references)", { desc = "Goto references" })
 keyset("i", "<C-space>", vim.fn["coc#refresh"](), { desc = "Trigger autocomplete in insert mode" })
 keyset("n", "<Leader>i", "<Plug>(coc-implementation)", { desc = "Goto implementation" })

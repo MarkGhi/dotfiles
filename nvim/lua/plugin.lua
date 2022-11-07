@@ -68,6 +68,7 @@ require("packer").startup(function()
 	use("daschw/leaf.nvim")
 	use("sainnhe/everforest")
 	use("navarasu/onedark.nvim")
+	use("ellisonleao/gruvbox.nvim")
 	use({ "neoclide/coc.nvim", branch = "release" })
 	use({
 		"nvim-lualine/lualine.nvim",

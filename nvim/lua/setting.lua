@@ -16,8 +16,8 @@ vim.opt.wildmenu = true -- Advanced menu for auto-completition
 -- Lualine setup
 require("lualine").setup({
 	options = {
-		theme = "onedark",
 		globalstatus = true, -- Set global to avoid bar split when window is splitted
+		theme = "gruvbox",
 	},
 	tabline = {
 		lualine_a = { "buffers" },
@@ -35,6 +35,7 @@ vim.cmd([[
 ]])
 
 -- Theme config
+--[[
 require("onedark").setup({
 	style = "warmer",
 	toggle_style_key = "<leader>@", --Put a random mapping to avoid any conflicts
@@ -42,10 +43,13 @@ require("onedark").setup({
 require("leaf").setup({
 	contrast = "low", -- default "low", alternatives: "medium", "high"
 })
+]]--
+require("gruvbox").setup()
 
-require("onedark").load()
+--require("onedark").load()
 --vim.cmd("colorscheme leaf")
 --vim.cmd("colorscheme everforest")
+vim.cmd("colorscheme gruvbox")
 
 require("nvim-treesitter.configs").setup({
 	highlight = {
