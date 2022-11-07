@@ -43,8 +43,21 @@ require("onedark").setup({
 require("leaf").setup({
 	contrast = "low", -- default "low", alternatives: "medium", "high"
 })
-]]--
-require("gruvbox").setup()
+]]
+--
+local gruvbox_palette = require("gruvbox.palette")
+require("gruvbox").setup({
+	overrides = {
+		SignColumn = { bg = gruvbox_palette["dark0"] },
+		GruvboxRedSign = { bg = gruvbox_palette["dark0"] },
+		GruvboxGreenSign = { bg = gruvbox_palette["dark0"] },
+		GruvboxYellowSign = { bg = gruvbox_palette["dark0"] },
+		GruvboxBlueSign = { bg = gruvbox_palette["dark0"] },
+		GruvboxPurpleSign = { bg = gruvbox_palette["dark0"] },
+		GruvboxAquaSign = { bg = gruvbox_palette["dark0"] },
+		GruvboxOrangeSign = { bg = gruvbox_palette["dark0"] },
+	},
+})
 
 --require("onedark").load()
 --vim.cmd("colorscheme leaf")
