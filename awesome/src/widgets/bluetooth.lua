@@ -4,7 +4,7 @@
 
 -- Awesome Libs
 local awful = require("awful")
-local color = require("src.theme.colors")
+local color = require("src.theme.gruvbox_colors")
 local dpi = require("beautiful").xresources.apply_dpi
 local gears = require("gears")
 local naughty = require("naughty")
@@ -33,8 +33,8 @@ return function()
 			right = dpi(8),
 			widget = wibox.container.margin,
 		},
-		bg = color["Green1"],
-		fg = color["Grey900"],
+		bg = color.dark0,
+		fg = color.neutral_blue,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, 5)
 		end,
@@ -79,12 +79,12 @@ return function()
 			end)
 		end
 		bluetooth_widget.icon_margin.icon_layout.icon:set_image(
-			gears.color.recolor_image(icon .. ".svg", color["Grey900"])
+			gears.color.recolor_image(icon .. ".svg", color.neutral_blue)
 		)
 	end, bluetooth_widget)
 
 	-- Signals
-	Hover_signal(bluetooth_widget, color["Blue200"], color["Grey900"])
+	Hover_signal(bluetooth_widget, color.dark0_soft, color.neutral_blue)
 
 	bluetooth_widget:connect_signal("button::press", function()
 		awful.spawn.easy_async_with_shell("rofi-bluetooth", function() end)

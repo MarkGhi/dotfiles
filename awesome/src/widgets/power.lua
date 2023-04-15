@@ -4,7 +4,7 @@
 
 -- Awesome Libs
 local awful = require("awful")
-local color = require("src.theme.colors")
+local color = require("src.theme.gruvbox_colors")
 local dpi = require("beautiful").xresources.apply_dpi
 local gears = require("gears")
 local wibox = require("wibox")
@@ -21,7 +21,7 @@ return function()
 					{
 						{
 							id = "icon",
-							image = gears.color.recolor_image(icondir .. "power.svg", color["Grey900"]),
+							image = gears.color.recolor_image(icondir .. "power.svg", color.neutral_red),
 							widget = wibox.widget.imagebox,
 							resize = false,
 						},
@@ -40,8 +40,8 @@ return function()
 			right = dpi(8),
 			widget = wibox.container.margin,
 		},
-		bg = color["Red900"],
-		fg = color["Grey800"],
+		bg = color.dark0,
+		fg = color.neutral_red,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, 5)
 		end,
@@ -49,7 +49,7 @@ return function()
 	})
 
 	-- Signals
-	Hover_signal(power_widget, color["Red200"], color["Grey900"])
+	Hover_signal(power_widget, color.dark0_soft, color.neutral_red)
 
 	power_widget:connect_signal("button::release", function()
 		awesome.emit_signal("module::powermenu:show")

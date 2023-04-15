@@ -38,4 +38,6 @@ require("mappings.mouse_bindings")
 require("src.core.rules")
 require("src.core.signals")
 
-awful.spawn.with_shell("picom")
+-- awful.spawn.with_shell("picom")
+awful.spawn.with_shell("openrgb -p Cozy")
+awful.spawn.with_shell("dispwin -d 1 ~/Downloads/Mi Monitor #1 2020-07-15 17-50 D6500 2.2 F-S XYZLUT+MTX.icm")

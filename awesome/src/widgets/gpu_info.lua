@@ -4,7 +4,7 @@
 
 -- Awesome Libs
 local awful = require("awful")
-local color = require("src.theme.colors")
+local color = require("src.theme.gruvbox_colors")
 local dpi = require("beautiful").xresources.apply_dpi
 local gears = require("gears")
 local watch = awful.widget.watch
@@ -22,7 +22,7 @@ return function(widget)
 						{
 							id = "icon",
 							widget = wibox.widget.imagebox,
-							image = gears.color.recolor_image(icon_dir .. "gpu.svg", color["Grey900"]),
+							image = gears.color.recolor_image(icon_dir .. "gpu.svg", color.neutral_orange),
 							resize = false,
 						},
 						id = "icon_layout",
@@ -47,14 +47,14 @@ return function(widget)
 			right = dpi(8),
 			widget = wibox.container.margin,
 		},
-		bg = color["Blue"],
-		fg = color["Grey900"],
+		bg = color.dark0,
+		fg = color.neutral_orange,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, 5)
 		end,
 		widget = wibox.container.background,
 	})
-	Hover_signal(gpu_usage_widget, color["Blue"], color["Grey900"])
+	Hover_signal(gpu_usage_widget, color.dark0_soft, color.neutral_orange)
 
 	local gpu_temp_widget = wibox.widget({
 		{
@@ -64,7 +64,7 @@ return function(widget)
 						{
 							id = "icon",
 							widget = wibox.widget.imagebox,
-							image = gears.color.recolor_image(icon_dir .. "cpu.svg", color["Grey900"]),
+							image = gears.color.recolor_image(icon_dir .. "thermometer.svg", color.neutral_orange),
 							resize = false,
 						},
 						id = "icon_layout",
@@ -89,8 +89,8 @@ return function(widget)
 			right = dpi(8),
 			widget = wibox.container.margin,
 		},
-		bg = color["Blue200"],
-		fg = color["Grey900"],
+		bg = color.dark0,
+		fg = color.neutral_orange,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, 5)
 		end,
@@ -128,13 +128,14 @@ return function(widget)
 				temp_color = color["Green200"]
 				temp_icon = icon_dir .. "thermometer-low.svg"
 			end
-			Hover_signal(gpu_temp_widget, color["Blue"], color["Grey900"])
-			gpu_temp_widget.container.gpu_layout.icon_margin.icon_layout.icon:set_image(temp_icon)
-			gpu_temp_widget:set_bg(color["Blue"])
+			--gpu_temp_widget.container.gpu_layout.icon_margin.icon_layout.icon:set_image(temp_icon)
+			--gpu_temp_widget:set_bg(color["Blue"])
 			gpu_temp_widget.container.gpu_layout.label.text = tostring(temp_num) .. "°C"
 			awesome.emit_signal("update::gpu_temp_widget", temp_num, temp_icon)
 		end
 	)
+
+	Hover_signal(gpu_temp_widget, color.dark0_soft, color.neutral_orange)
 
 	if widget == "usage" then
 		return gpu_usage_widget

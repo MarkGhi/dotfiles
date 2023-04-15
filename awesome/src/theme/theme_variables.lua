@@ -5,6 +5,7 @@
 
 -- Awesome Libs
 local color = require("src.theme.colors")
+local gruvbox_color = require("src.theme.gruvbox_colors")
 local dpi = require("beautiful.xresources").apply_dpi
 local gears = require("gears")
 local awful = require("awful")
@@ -22,7 +23,7 @@ theme.bg_urgent = color["RedA200"]
 theme.bg_minimize = color["White"]
 theme.bg_systray = color["White"]
 
-theme.fg_normal = color["White"]
+theme.fg_normal = gruvbox_color.light4
 theme.fg_focus = color["White"]
 theme.fg_urgent = color["White"]
 theme.fg_minimize = color["White"]
@@ -65,7 +66,7 @@ theme.titlebar_minimize_button_normal = icondir .. "minimize.svg"
 theme.titlebar_maximized_button_active = icondir .. "maximize.svg"
 theme.titlebar_maximized_button_inactive = icondir .. "maximize.svg"
 
-theme.bg_systray = color["BlueGrey800"]
+theme.bg_systray = gruvbox_color.dark1
 theme.systray_icon_spacing = dpi(10)
 
 theme.hotkeys_bg = color["Grey900"]

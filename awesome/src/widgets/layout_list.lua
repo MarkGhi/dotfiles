@@ -4,7 +4,7 @@
 
 -- Awesome Libs
 local awful = require("awful")
-local color = require("src.theme.colors")
+local color = require("src.theme.gruvbox_colors")
 local dpi = require("beautiful").xresources.apply_dpi
 local gears = require("gears")
 local wibox = require("wibox")
@@ -38,7 +38,7 @@ return function()
 		{
 			{
 				awful.widget.launcher({
-					image = gears.color.recolor_image(icon_dir .. "arch_logo.svg", color["White"]),
+					image = gears.color.recolor_image(icon_dir .. "arch_logo.svg", color.neutral_aqua),
 					menu = mymainmenu,
 				}),
 				id = "icon_layout",
@@ -52,7 +52,7 @@ return function()
 			forced_width = dpi(40),
 			widget = wibox.container.margin,
 		},
-		bg = color["Blue"],
+		bg = color.dark0,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, 5)
 		end,
@@ -60,7 +60,7 @@ return function()
 	})
 
 	-- Signals
-	Hover_signal(layout, color["Blue"], color["Grey900"])
+	Hover_signal(layout, color.dark0_soft, color.neutral_aqua)
 
 	layout:connect_signal("button::press", function()
 		awful.layout.inc(-1)

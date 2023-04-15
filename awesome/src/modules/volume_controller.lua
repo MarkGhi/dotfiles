@@ -716,6 +716,7 @@ bluez_output.14_3F_A6_1C_7B_D4.a2dp-sink
 
 	get_input_devices()
 
+	-- TODO: this might not works
 	-- Event watcher, detects when device is addes/removed
 	awful.spawn.with_line_callback([[bash -c "LC_ALL=C pactl subscribe | grep --line-buffered 'on server'"]], {
 		stdout = function(line)

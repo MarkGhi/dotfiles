@@ -4,7 +4,7 @@
 
 -- Awesome Libs
 local awful = require("awful")
-local color = require("src.theme.colors")
+local color = require("src.theme.gruvbox_colors")
 local dpi = require("beautiful").xresources.apply_dpi
 local gears = require("gears")
 local wibox = require("wibox")
@@ -23,7 +23,7 @@ return function(s)
 							id = "icon",
 							widget = wibox.widget.imagebox,
 							resize = false,
-							image = gears.color.recolor_image(icondir .. "keyboard.svg", color["Grey900"]),
+							image = gears.color.recolor_image(icondir .. "keyboard.svg", color.neutral_purple),
 						},
 						id = "icon_layout",
 						widget = wibox.container.place,
@@ -47,8 +47,8 @@ return function(s)
 			right = dpi(8),
 			widget = wibox.container.margin,
 		},
-		bg = color["Green2"],
-		fg = color["Grey900"],
+		bg = color.dark0,
+		fg = color.neutral_purple,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, 5)
 		end,
@@ -316,7 +316,7 @@ return function(s)
 	end)
 
 	-- Signals
-	Hover_signal(kblayout_widget, color["Green200"], color["Grey900"])
+	Hover_signal(kblayout_widget, color.dark0_soft, color.neutral_purple)
 
 	local kblayout_keygrabber = awful.keygrabber({
 		autostart = false,

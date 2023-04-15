@@ -4,7 +4,7 @@
 
 -- Awesome Libs
 local awful = require("awful")
-local color = require("src.theme.colors")
+local color = require("src.theme.gruvbox_colors")
 local dpi = require("beautiful").xresources.apply_dpi
 local gears = require("gears")
 local wibox = require("wibox")
@@ -22,7 +22,7 @@ return function()
 					{
 						{
 							id = "icon",
-							image = gears.color.recolor_image(icondir .. "clock.svg", color["Grey900"]),
+							image = gears.color.recolor_image(icondir .. "clock.svg", color.neutral_aqua),
 							widget = wibox.widget.imagebox,
 							resize = false,
 						},
@@ -49,15 +49,15 @@ return function()
 			right = dpi(8),
 			widget = wibox.container.margin,
 		},
-		bg = color["OrangeDark"],
-		fg = color["Grey900"],
+		bg = color.dark0,
+		fg = color.neutral_aqua,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, 5)
 		end,
 		widget = wibox.container.background,
 	})
 
-	Hover_signal(clock_widget, color["Orange200"], color["Grey900"])
+	Hover_signal(clock_widget, color.dark0_soft, color.neutral_aqua)
 
 	return clock_widget
 end

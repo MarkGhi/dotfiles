@@ -3,7 +3,7 @@
 ------------------------------
 -- Awesome Libs
 local awful = require("awful")
-local color = require("src.theme.colors")
+local color = require("src.theme.gruvbox_colors")
 local dpi = require("beautiful").xresources.apply_dpi
 local gears = require("gears")
 local wibox = require("wibox")
@@ -46,8 +46,8 @@ return function(s)
 			right = dpi(8),
 			widget = wibox.container.margin,
 		},
-		bg = color["OrangeLight"],
-		fg = color["Grey900"],
+		bg = color.dark0,
+		fg = color.neutral_yellow,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, 5)
 		end,
@@ -74,7 +74,7 @@ return function(s)
 			end
 			audio_widget.container.audio_layout.label:set_text(volume .. "%")
 			audio_widget.container.audio_layout.icon_margin.icon_layout.icon:set_image(
-				gears.color.recolor_image(icon .. ".svg", color["Grey900"])
+				gears.color.recolor_image(icon .. ".svg", color.neutral_yellow)
 			)
 			awesome.emit_signal("get::volume", volume)
 		end)
@@ -86,7 +86,7 @@ return function(s)
 				audio_widget.container.audio_layout.label.visible = false
 				audio_widget.container:set_right(0)
 				audio_widget.container.audio_layout.icon_margin.icon_layout.icon:set_image(
-					gears.color.recolor_image(icondir .. "volume-mute" .. ".svg", color["Grey900"])
+					gears.color.recolor_image(icondir .. "volume-mute" .. ".svg", color.neutral_yellow)
 				)
 				awesome.emit_signal("get::volume_mute", true)
 			else
@@ -98,7 +98,7 @@ return function(s)
 	end
 
 	-- Signals
-	Hover_signal(audio_widget, color["Yellow200"], color["Grey900"])
+	Hover_signal(audio_widget, color.dark0_soft, color.neutral_yellow)
 
 	audio_widget:connect_signal("button::press", function()
 		--awful.spawn.easy_async_with_shell("pavucontrol", function() end)

@@ -26,7 +26,7 @@ awful.screen.connect_for_each_screen(
 		-- Widgets
 		--s.battery = require("src.widgets.battery")()
 		s.audio = require("src.widgets.audio")(s)
-		s.date = require("src.widgets.date")()
+		--s.date = require("src.widgets.date")()
 		s.clock = require("src.widgets.clock")()
 		s.bluetooth = require("src.widgets.bluetooth")()
 		s.layoutlist = require("src.widgets.layout_list")()

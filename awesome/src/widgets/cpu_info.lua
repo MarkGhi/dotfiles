@@ -4,7 +4,7 @@
 
 -- Awesome Libs
 local awful = require("awful")
-local color = require("src.theme.colors")
+local color = require("src.theme.gruvbox_colors")
 local dpi = require("beautiful").xresources.apply_dpi
 local gears = require("gears")
 local watch = awful.widget.watch
@@ -23,7 +23,7 @@ return function(widget, clock_mode)
 						{
 							id = "icon",
 							widget = wibox.widget.imagebox,
-							image = gears.color.recolor_image(icon_dir .. "cpu.svg", color["Grey900"]),
+							image = gears.color.recolor_image(icon_dir .. "cpu.svg", color.neutral_green),
 							resize = false,
 						},
 						id = "icon_layout",
@@ -48,8 +48,8 @@ return function(widget, clock_mode)
 			right = dpi(8),
 			widget = wibox.container.margin,
 		},
-		bg = color["Yellow"],
-		fg = color["Grey900"],
+		bg = color.dark0,
+		fg = color.neutral_green,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, 5)
 		end,
@@ -64,6 +64,7 @@ return function(widget, clock_mode)
 						{
 							id = "icon",
 							widget = wibox.widget.imagebox,
+							image = gears.color.recolor_image(icon_dir .. "thermometer.svg", color.neutral_green),
 							resize = false,
 						},
 						id = "icon_layout",
@@ -88,8 +89,8 @@ return function(widget, clock_mode)
 			right = dpi(8),
 			widget = wibox.container.margin,
 		},
-		bg = color["Green200"],
-		fg = color["Grey900"],
+		bg = color.dark0,
+		fg = color.neutral_green,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, 5)
 		end,
@@ -129,8 +130,8 @@ return function(widget, clock_mode)
 			right = dpi(8),
 			widget = wibox.container.margin,
 		},
-		bg = color["Brown"],
-		fg = color["Grey900"],
+		bg = color.dark0,
+		fg = color.neutral_green,
 		shape = function(cr, width, height)
 			gears.shape.rounded_rect(cr, width, height, 5)
 		end,
@@ -172,9 +173,8 @@ return function(widget, clock_mode)
 			temp_color = color["Red200"]
 			temp_icon = icon_dir .. "thermometer-high.svg"
 		end
-		Hover_signal(cpu_temp, temp_color, color["Grey900"])
-		cpu_temp.container.cpu_layout.icon_margin.icon_layout.icon:set_image(temp_icon)
-		cpu_temp:set_bg(color["Yellow"])
+		--cpu_temp.container.cpu_layout.icon_margin.icon_layout.icon:set_image(temp_icon)
+		--cpu_temp:set_bg(color["Yellow"])
 		cpu_temp.container.cpu_layout.label.text = math.floor(temp_num) .. "°C"
 	end)
 
@@ -198,8 +198,9 @@ return function(widget, clock_mode)
 		end
 	end)
 
-	Hover_signal(cpu_usage_widget, color["Blue200"], color["Grey900"])
-	Hover_signal(cpu_clock, color["Purple200"], color["Grey900"])
+	Hover_signal(cpu_temp, color.dark0_soft, color.neutral_green)
+	Hover_signal(cpu_usage_widget, color.dark0_soft, color.neutral_green)
+	Hover_signal(cpu_clock, color.dark0_soft, color.neutral_green)
 
 	if widget == "usage" then
 		return cpu_usage_widget
