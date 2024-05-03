@@ -1,8 +1,5 @@
 local keyset = vim.keymap.set
 
-keyset("n", "<Leader>e", ":NvimTreeFocus<CR>", { desc = "NerdTree focus" })
-keyset("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "NerdTree toggle" })
-
 -- MacOs has different key signal for Alt-hjkl
 if vim.fn.has "mac" == 1 then
 	keyset("n", "∆", "<C-w>h", { desc = "Move to left windows" })
@@ -25,7 +22,7 @@ keyset("n", "<C-h>", "<ESC>^", { desc = "Go to beginning" })
 keyset("v", "<C-h>", "<ESC>^", { desc = "Go to beginning" })
 keyset("n", "<C-l>", "<End>", { desc = "Go to end" })
 keyset("v", "<C-l>", "<End>", { desc = "Go to end" })
-keyset("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy all" })
+keyset("n", "<C-ac>", "<cmd> %y+ <CR>", { desc = "Copy all" })
 keyset("n", "<C-s>", "<cmd> w <CR>", { desc = "Save" })
 keyset("n", "<C-w>", ":bp|bd# <CR>", { desc = "Close current buffer" })
 keyset("n", "<C-q>", "<cmd> q <CR>", { desc = "Close current window" })
@@ -35,42 +32,24 @@ keyset("n", "<Leader>s", ":vsplit<CR>", { desc = "Create new window to right" })
 keyset("n", "<Tab>", ":bn<CR>", { desc = "Go to next buffer" })
 keyset("n", "<S-Tab>", ":bp<CR>", { desc = "Go to previous buffer" })
 
+keyset("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "NerdTree toggle" })
+keyset("n", "<C-o>", ":SymbolsOutline<CR>", { desc = "Outline toggle" })
+
 keyset("n", "<Leader>t", "<cmd> ToggleTerm direction=float <CR>", { desc = "Open floating terminal" })
 keyset("n", "<Leader>wk", function()
 	vim.cmd("WhichKey")
 end, { desc = "Show all keybindings" })
 
--- Flutter
-keyset("n", "<Leader>fr", ":CocCommand flutter.run<CR>", { desc = "Run flutter project" })
-keyset("n", "<Leader>fd", ":CocCommand flutter.devices<CR>", { desc = "Show all availiable flutter devices" })
-keyset("n", "<Leader>fh", ":CocCommand flutter.dev.hotRestart<CR>", { desc = "Run hot restart" })
-keyset("n", "<Leader>fb", ":below new output:///flutter-dev<CR>", { desc = "Show debug window" })
-keyset("n", "<Leader>fe", ":CocCommand flutter.emulators<CR>", { desc = "Show all availiable flutter emulators" })
+-- LSP related shortcuts
+keyset("n", "<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Show Coc code action" })
+keyset("x", "<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Show Coc code action" })
+keyset("n", "<Leader>f", "<cmd>lua vim.lsp.buf.format{async=true}<cr>", { desc = "Format selected code" })
+keyset("x", "<Leader>f", "<cmd>lua vim.lsp.buf.format{async=true}<cr>", { desc = "Format selected code" })
 
--- Coc general (most of them retreived from official coc.nvim repo readme)
-local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
-
-function _G.check_back_space()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
-end
-
--- Navigate through autocomplete dialog with Tab
-keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
-keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
-
--- Make <CR> to accept selected completion item or notify coc.nvim to format
-keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
-
-keyset("n", "<Leader>a", "<Plug>(coc-codeaction-selected)", { desc = "Show Coc code action" })
-keyset("x", "<Leader>a", "<Plug>(coc-codeaction-selected)", { desc = "Show Coc code action" })
-keyset("n", "<Leader>f", "<Plug>(coc-format-selected)", { desc = "Format selected code" })
-keyset("x", "<Leader>f", "<Plug>(coc-format-selected)", { desc = "Format selected code" })
-keyset("n", "<Leader>dg", "<Plug>(coc-definition)", { desc = "Goto definition" })
-keyset("n", "<Leader>r", "<Plug>(coc-references)", { desc = "Goto references" })
-keyset("i", "<C-space>", vim.fn["coc#refresh"](), { desc = "Trigger autocomplete in insert mode" })
-keyset("n", "<Leader>i", "<Plug>(coc-implementation)", { desc = "Goto implementation" })
-keyset("n", "<Leader>ds", ":vsp<CR><Plug>(coc-definition)<C-W>L", { desc = "Show definition in a splitted window" })
+keyset("n", "<Leader>dg", vim.lsp.buf.definition, { desc = "Goto definition" })
+keyset("n", "<Leader>r", "<cmd>Telescope lsp_references<cr>", { desc = "Show references" })
+keyset("n", "<Leader>i", vim.lsp.buf.implementation, { desc = "Goto implementation" })
+keyset("n", "<Leader>ds", ":vsp<CR><cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Show definition in a splitted window" })
 
 -- Telescope
 keyset("n", "<Leader>p", ":Telescope project<CR>", { desc = "Show all projects" })
