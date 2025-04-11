@@ -33,12 +33,9 @@ keyset("n", "<Tab>", ":bn<CR>", { desc = "Go to next buffer" })
 keyset("n", "<S-Tab>", ":bp<CR>", { desc = "Go to previous buffer" })
 
 keyset("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "NerdTree toggle" })
-keyset("n", "<C-o>", ":SymbolsOutline<CR>", { desc = "Outline toggle" })
+keyset("n", "<C-o>", "<cmd>Outline<CR>", { desc = "Outline toggle" })
 
 keyset("n", "<Leader>t", "<cmd> ToggleTerm direction=float <CR>", { desc = "Open floating terminal" })
-keyset("n", "<Leader>wk", function()
-	vim.cmd("WhichKey")
-end, { desc = "Show all keybindings" })
 
 -- LSP related shortcuts
 keyset("n", "<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Show Coc code action" })
@@ -47,11 +44,13 @@ keyset("n", "<Leader>f", "<cmd>lua vim.lsp.buf.format{async=true}<cr>", { desc =
 keyset("x", "<Leader>f", "<cmd>lua vim.lsp.buf.format{async=true}<cr>", { desc = "Format selected code" })
 
 keyset("n", "<Leader>dg", vim.lsp.buf.definition, { desc = "Goto definition" })
+keyset("n", "<Leader>ds", ":vsp<CR><cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Show definition in a splitted window" })
 keyset("n", "<Leader>r", "<cmd>Telescope lsp_references<cr>", { desc = "Show references" })
 keyset("n", "<Leader>i", vim.lsp.buf.implementation, { desc = "Goto implementation" })
-keyset("n", "<Leader>ds", ":vsp<CR><cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Show definition in a splitted window" })
 
 -- Telescope
 keyset("n", "<Leader>p", ":Telescope project<CR>", { desc = "Show all projects" })
 keyset("n", "<Leader>ff", ":Telescope find_files<CR>", { desc = "Show all projects" })
 keyset("n", "<Leader>fs", ":Telescope live_grep<CR>", { desc = "Show all projects" })
+
+keyset("n", "<Leader>wk", function() vim.cmd("WhichKey") end, { desc = "Show all keybindings" })

@@ -1,13 +1,25 @@
 return {
-	"karb94/neoscroll.nvim",
-	config = function()
-		require('neoscroll').setup()
+  "karb94/neoscroll.nvim",
+  config = function()
+    local neoscroll = require('neoscroll')
+    neoscroll.setup()
 
-		-- Increase scroll velocity decreasing animation duration time (by default is 150)
-		local t    = {}
-		t['<C-u>'] = { 'scroll', { '-vim.wo.scroll', 'true', '50' } }
-		t['<C-d>'] = { 'scroll', { 'vim.wo.scroll', 'true', '50' } }
-		t['zz']    = { 'zz', { '50' } }
-		require('neoscroll.config').set_mappings(t)
-	end,
+    -- Increase scroll velocity decreasing animation duration time (by default is 150)
+    local keymap = {
+      ["<C-u>"] = function() neoscroll.ctrl_u({ duration = 50 }) end;
+      ["<C-d>"] = function() neoscroll.ctrl_d({ duration = 50 }) end;
+      ["<C-b>"] = function() neoscroll.ctrl_b({ duration = 450 }) end;
+      ["<C-f>"] = function() neoscroll.ctrl_f({ duration = 450 }) end;
+      ["<C-y>"] = function() neoscroll.scroll(-0.1, { move_cursor=false; duration = 100 }) end;
+      ["<C-e>"] = function() neoscroll.scroll(0.1, { move_cursor=false; duration = 100 }) end;
+      ["zt"]    = function() neoscroll.zt({ half_win_duration = 250 }) end;
+      ["zz"]    = function() neoscroll.zz({ half_win_duration = 50 }) end;
+      ["zb"]    = function() neoscroll.zb({ half_win_duration = 250 }) end;
+    }
+
+    local modes = { 'n', 'v', 'x' }
+    for key, func in pairs(keymap) do
+      vim.keymap.set(modes, key, func)
+    end
+  end,
 }

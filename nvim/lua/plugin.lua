@@ -1,28 +1,30 @@
-require("packer").startup(function()
-	use("wbthomason/packer.nvim")
-	-- Theme
-	use(require "plugins.onedark")
-	-- Startup screen
-	use(require "plugins.alpha")
-	-- Fuzzy finder
-	use(require "plugins.telescope")
-	use(require "plugins.telescope_project")
-	-- Key mapping viewer
-	use(require "plugins.which_key")
-	-- Floating terminal
-	use(require "plugins.toggle_term")
-	-- Lsp stuffs
-	use(require "plugins.lsp")
-	-- Bottom status line
-	use(require "plugins.lualine")
-	-- Syntax highlighter
-	use(require "plugins.treesitter")
-	-- Add smooth scrolling
-	use(require "plugins.neoscroll")
-	-- Automatically closes parentheses, square brackets and braces when typing.
-	use("jiangmiao/auto-pairs")
-	-- Outline window
-	use(require "plugins.outline")
-	-- File explorer window
-	use(require "plugins.tree")
-end)
+return {
+  -- Theme
+  require "plugins.everforest",
+  -- Startup screen
+  require "plugins.alpha",
+  -- Fuzzy finder
+  require "plugins.telescope",
+  require "plugins.telescope_project",
+  -- Key mapping viewer
+  require "plugins.which_key",
+  -- Floating terminal
+  require "plugins.toggle_term",
+  -- Lsp stuffs
+  require "plugins.lsp",
+  -- Bottom status line
+  require "plugins.lualine",
+  -- Syntax highlighter
+  require "plugins.treesitter",
+  -- Add smooth scrolling
+  require "plugins.neoscroll",
+  -- Automatically closes parentheses, square brackets and braces when typing.
+  require "plugin.autopairs",
+  -- Outline window
+  require "plugins.outline",
+  -- File explorer window
+  require "plugins.tree",
+  -- Word highlighter
+  require "plugins.local_highlight"
+  -- Git integration
+}

@@ -16,7 +16,7 @@ It features:
 - Parenthesis autoclosing with [Auto-pairs](https://github.com/jiangmiao/auto-pairs)
 
 Dependencies:
-- Packer for plugin management (Installation instruction at project [Github page](https://github.com/wbthomason/packer.nvim))
+- Lazy for plugin management
 - Nerd Font to correctly display icons and symbols
 
 Install necessaries Treesitter extensions with:

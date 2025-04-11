@@ -1,7 +1,7 @@
 return {
-	"akinsho/toggleterm.nvim",
-	tag = "v2.*",
-	config = function()
-		require("toggleterm").setup()
-	end,
+  "akinsho/toggleterm.nvim",
+  version = "*",
+  opts = {
+    shell = "nu"
+  }
 }

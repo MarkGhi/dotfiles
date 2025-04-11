@@ -1,15 +1,12 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	run = function()
-		require("nvim-treesitter.install").update({ with_sync = true })
-	end,
-	config = function()
-		require("nvim-treesitter.configs").setup({
-			highlight = {
-				enable = true,
-				-- Disable built-in syntax highlighter
-				additional_vim_regex_highlighting = false,
-			},
-		})
-	end
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  config = function()
+    local configs = require("nvim-treesitter.configs")
+    configs.setup({
+      sync_install = false,
+      highlight = { enable = true },
+      indent = { enable = true },
+    })
+  end
 }
